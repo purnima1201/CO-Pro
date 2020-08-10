@@ -7,11 +7,12 @@ class HomeScreen {
     this.welcome = createElement('h2');
     this.info = createElement('h2');
     this.title = createElement('h2');
-    this.reset=createButton('Reset');
-    this.sD=createSprite(displayWidth/2 + 10, 170,width,height);
+
+    this.sD=createSprite(displayWidth/2 + 10, 130,width,height);
     this.sD.addImage("sd.png",sd_image);
+    this.sD.scale = 0.05;
     this.enemy=createSprite( 200 , 200 , width , height );
-    this.homeScreenPlayer=createSprite(350,200,width,height);
+    this.homeScreenPlayer=createSprite(1200,200,width,height);
 
     
 
@@ -35,22 +36,20 @@ class HomeScreen {
     this.title.html("Co_Protection");
     this.title.position(displayWidth/2 - 50, 0);
 
-    sd_image.height=200;
-    sd_image.width=100;
-    //this.sD.display();
+    
 
     this.enemy.addImage("enemy.png",enemy_img);
     
     //this.enemy.display();    
-    //this.enemy.depth=3;
+    this.enemy.depth=3;
     
     this.homeScreenPlayer.addImage("player.gif",player_img);
     this.homeScreenPlayer.width=50;
     this.homeScreenPlayer.height=100;
-    this.homeScreenPlayer.scale=5;
-    //this.homeScreenPlayer=2;
+    this.enemy.scale=0.5;
+    this.homeScreenPlayer.scale=0.5;
 
-    //this.homeScreenPlayer.display();
+   
 
     console.log(this.enemy.depth,this.homeScreenPlayer.depth);
 
@@ -69,28 +68,15 @@ class HomeScreen {
 
     this.button.position(displayWidth/2 + 20, displayHeight/2);
     
-    
 
-    this.reset.position(displayWidth-100,20);
-    this.reset.mousePressed(()=>{
-      player.updateCount(0);
-      game.update(0);
+    this.button.mousePressed(()=>{
+      gameState =1;
       
     });
 
-      this.button.mousePressed(()=>{
-        this.input.hide();
-        this.button.hide();      
-        player.name = this.input.value();
-        playerCount+=1;
-        player.index = playerCount;
-        player.update();
-        player.updateCount(playerCount);
-      });
-
     
-    enemy_img.height=300;
-    enemy_img.width=150; 
+    //enemy_img.height=300;
+    //enemy_img.width=150; 
 
     drawSprites();
   }
